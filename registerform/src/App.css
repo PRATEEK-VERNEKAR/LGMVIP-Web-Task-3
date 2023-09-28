@@ -1,38 +1,102 @@
+*{
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.Form{
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.inputRow{
+  display: grid;
+  grid-template-columns: 30% 30%;
+  /* grid-template-rows: 1fr; */
+  justify-content: center;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.inputTag input{
+  font-size: 2rem;
+  border-radius: 1rem;
+}
+
+.inputTag label{
+  font-size: 1.2rem;
+}
+
+.inputRow p{
+  font-size:1.2rem;
+}
+
+.skills_checkbox{
+  display: flex;
+}
+
+
+.skills_ele{
+  margin-right:10px
+}
+
+
+.but_sec{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.but_sec button{
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  padding:2px;
+}
+
+.Window{
+  background-color: blue;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.Window h1{
+  text-align: center;
+  margin:20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Window .display_stud{
+  width: 80%;
+  height: 60%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  overflow-y: auto;
+  margin-bottom: 40px;
+}
+
+.desc-head, .img-head{
+  border:2px solid black;
+  height: 30px;
+  padding:2px;
+  background-color: blanchedalmond;
+}
+
+
+.desc-child , .img-child{
+  border:2px solid black;
+  /* height: 100px; */
+  padding:2px;
+  background-color: green;
+  /* height: 100px; */
 }
