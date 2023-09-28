@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 
 function App() {
   const [studList,setStudList]=useState([])
   const [tempStud,setTempStud]=useState({name:"",email:"",website:"",image:"",gender:"",skills:[]})
+
 
   const handleChange=(e)=>{
     const name=e.target.name;
@@ -37,7 +37,7 @@ function App() {
   
   const handleSubmit=(e)=>{
     e.preventDefault();
-    if(tempStud.name && tempStud.email && tempStud.website && tempStud.image && tempStud.gender && tempStud.skills.length!==0){
+    if(tempStud.name && tempStud.email && tempStud.website && tempStud.image && tempStud.gender){
       setStudList([...studList,tempStud]);
     }
   }
@@ -45,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <form className='Form'>
+        <h1>Enter Student Details</h1>
         <div className='inputRow inputTag'>
           <label htmlFor='name'>Name</label>
           <input type='text' name='name' id='name' onChange={handleChange} value={tempStud.name}></input>
@@ -98,26 +99,29 @@ function App() {
       </form>
       <div className='Window'>
         <h1>Enrolled Students</h1>
-        <div className='display_stud'>
-          {/* <div className='description desc-head'>Description</div>
-          <div className='image img-head'>Image</div> */}
-          {studList.map((data)=>{
-            return(
-              <>
-                <div className='description desc-child'>
-                  <p>{data.name}</p>
-                  <p>{data.gender}</p>
-                  <p>{data.email}</p>
-                  <p>{data.website}</p>
-                  <p>{data.skills}</p>
+          <div className='display_header'>
+            <div className='description desc-head'>Description</div>
+            <div className='image img-head'>Image</div>
+          </div>
+          <div className='display_stud'>
+            {studList.map((data ,index)=>{
+              return(
+                <div className='inner_display_stud' key={index} >
+                  <div className='description desc-child'>
+                    <p>{data.name}</p>
+                    <p>{data.gender}</p>
+                    <p>{data.email}</p>
+                    <p>{data.website}</p>
+                    <p>{data.skills}</p>
+                  </div>
+                  <div className='image img-child'>
+                    <img src={data.image} alt='Profile'></img>
+                    {/* <img src={"https://images.unsplash.com/photo-1675703236969-e4ce4d298618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1928&q=80"} height='120px' width='130px' alt='Profile'></img> */}
+                  </div>
                 </div>
-                <div className='image img-child'>
-                  <img src={data.image} alt='Profile'></img>
-                </div>
-              </>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
       </div>
     </div>
   );
