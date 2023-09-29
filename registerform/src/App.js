@@ -32,13 +32,19 @@ function App() {
 
   const handleClear=(e)=>{
     e.preventDefault();
-    setTempStud({name:"",email:"",website:"",image:"",gender:"",skills:[]})
+    setTempStud({name:"",email:"",website:"",image:"",gender:"",skills:[]});
   }
   
   const handleSubmit=(e)=>{
     e.preventDefault();
     if(tempStud.name && tempStud.email && tempStud.website && tempStud.image && tempStud.gender){
       setStudList([...studList,tempStud]);
+      document.getElementById('gender_male').checked=false;
+      document.getElementById('gender_female').checked=false;
+      document.getElementById('skills_html').checked=false;
+      document.getElementById('skills_css').checked=false;
+      document.getElementById('skills_java').checked=false;
+      setTempStud({name:"",email:"",website:"",image:"",gender:"",skills:[]})
     }
   }
 
@@ -112,11 +118,20 @@ function App() {
                     <p>{data.gender}</p>
                     <p>{data.email}</p>
                     <p>{data.website}</p>
-                    <p>{data.skills}</p>
+                    {/* <p>{data.skills}</p> */}
+                    <p>
+                      {
+                        data.skills.map((inn)=>{
+                          return(
+                            <span>{inn}&nbsp;&nbsp;</span>
+                          )
+                        })
+                      }
+                    </p>
                   </div>
                   <div className='image img-child'>
-                    <img src={data.image} alt='Profile'></img>
-                    {/* <img src={"https://images.unsplash.com/photo-1675703236969-e4ce4d298618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1928&q=80"} height='120px' width='130px' alt='Profile'></img> */}
+                    {/* <img src={data.image} alt='Profile'></img> */}
+                    <img src={data.image} height='120px' width='130px' alt='Profile'></img>
                   </div>
                 </div>
               )
